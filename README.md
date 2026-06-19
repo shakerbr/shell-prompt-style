@@ -18,17 +18,21 @@ Aurora is a feature-rich shell prompt built entirely in Bash. It adapts to your 
 
 ### Preview
 
-<p align="center">
-  <img src="docs/preview-dark.svg" alt="Aurora prompt — dark mode" width="780"><br>
+<div align="center">
+  <div style="overflow:hidden; width:780px; max-width:100%; aspect-ratio:3690/564; margin:0 auto;">
+    <img src="docs/preview-dark.png" alt="Aurora prompt — dark mode" style="width:100%; display:block;">
+  </div>
   <sub><strong>Dark</strong> — aurora theme</sub>
-</p>
+</div>
 
-<p align="center">
-  <img src="docs/preview-light.svg" alt="Aurora prompt — light mode" width="780"><br>
+<div align="center">
+  <div style="overflow:hidden; width:780px; max-width:100%; aspect-ratio:3690/564; margin:0 auto;">
+    <img src="docs/preview-light.png" alt="Aurora prompt — light mode" style="width:100%; display:block;">
+  </div>
   <sub><strong>Light</strong> — aurora theme</sub>
-</p>
+</div>
 
-Colors match the Aurora xterm-256 palette defined in <code>bashrc</code>. The live prompt auto-switches between them via <code>AURORA_MODE="auto"</code>.
+The live prompt auto-switches between dark and light via <code>AURORA_MODE="auto"</code>.
 
 ---
 
@@ -183,8 +187,11 @@ Each theme ships with tuned palettes for both dark and light terminal background
 
 ```
 shell-prompt-style/
-├── bashrc          # Config + engine — the entire prompt
-├── LICENSE         # MIT
+├── bashrc                  # Config + engine — the entire prompt
+├── docs/
+│   ├── preview-dark.png    # README preview (dark)
+│   └── preview-light.png   # README preview (light)
+├── LICENSE                 # MIT
 └── README.md
 ```
 
