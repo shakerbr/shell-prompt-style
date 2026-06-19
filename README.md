@@ -1,92 +1,141 @@
-# Aurora — Adaptive Customizable Bash Prompt
+<div align="center">
 
-A beautiful, feature-rich Bash prompt with automatic dark/light mode, six color themes, git integration, and dozens of configuration options — all in a single file with no external dependencies.
+# Aurora
 
-**Author:** [Shaker Br](https://github.com/shakerbr) · [shbhky@gmail.com](mailto:shbhky@gmail.com)
+**An adaptive, customizable Bash prompt — one file, zero dependencies.**
 
-## Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Bash](https://img.shields.io/badge/Bash-4.0%2B-4EAA25?logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
+[![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey?logo=linux&logoColor=white)](https://github.com/shakerbr/shell-prompt-style)
 
-- **6 themes** — `aurora`, `dracula`, `cyberpunk`, `forest`, `ocean`, `mono`
-- **Auto dark/light mode** — follows GNOME / Ptyxis system preference, or force dark/light
-- **Git status** — branch, dirty/staged/untracked markers, ahead/behind upstream, stash count
-- **Smart directory display** — full path, truncated parents, or basename only
-- **Command timer** — shows how long the last command took (configurable threshold)
-- **Python venv & Conda** — detects active virtual environments
-- **SSH indicator** — highlights remote sessions
-- **Background jobs** — shows running job count
-- **Exit code** — success/failure indicator with optional error code
-- **Customizable symbols** — swap emoji/unicode for plain text if you don't use a Nerd Font
-- **Prompt styles** — chevron, arrow, lambda, dollar, rocket, or minimal
-- **Connector styles** — rounded, sharp, dots, dashes, or none
+[Installation](#installation) · [Configuration](#configuration) · [Themes](#themes) · [License](#license)
 
-## Requirements
+</div>
 
-- **Bash** 4.0+
-- **Git** (optional — only needed for git prompt segments)
-- **gsettings / dconf** (optional — only needed for `AURORA_MODE="auto"` on GNOME-based desktops)
+---
 
-## Quick Start
+Aurora is a feature-rich shell prompt built entirely in Bash. It adapts to your system's dark/light preference, surfaces git state at a glance, and exposes every detail through a single configuration block at the top of one file — no plugins, no package manager, no runtime overhead.
 
-### 1. Back up your existing `.bashrc`
+### Preview
+
+```
+╭─ ✔ ◴ 3s ─── shakerbr@dev ─ in 🗀 ~/projects/my-app on ⎇  main ✎ ● + ⇡2  14:32
+╰─❯❯❯
+```
+
+> Add a screenshot here once published — `docs/preview.png` works great as a social preview.
+
+---
+
+## Highlights
+
+| | |
+|---|---|
+| **Themes** | Six curated palettes — Aurora, Dracula, Cyberpunk, Forest, Ocean, Mono |
+| **Adaptive mode** | Auto-detect GNOME / Ptyxis dark-light, or force either mode |
+| **Git-aware** | Branch, dirty/staged/untracked, ahead/behind, stash count |
+| **Smart paths** | Full path, truncated parents, or basename-only display |
+| **Context** | Command timer, Python venv, Conda, SSH sessions, background jobs |
+| **Polish** | Six arrow styles, five connector styles, bold input, exit codes |
+
+---
+
+## Installation
+
+### Prerequisites
+
+| Dependency | Required | Notes |
+|---|---|---|
+| Bash 4.0+ | Yes | Standard on most Linux distributions |
+| Git | No | Needed only for git prompt segments |
+| `gsettings` / `dconf` | No | Needed only for `AURORA_MODE="auto"` on GNOME desktops |
+
+### Setup
+
+**1. Back up your existing shell config**
 
 ```bash
 cp ~/.bashrc ~/.bashrc.bak
 ```
 
-### 2. Add Aurora to your shell
+**2. Install Aurora** — pick one method:
 
-**Option A — Source the file directly**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/shakerbr/shell-prompt-style/main/bashrc -o ~/.aurora-prompt.sh
-echo 'source ~/.aurora-prompt.sh' >> ~/.bashrc
-```
-
-**Option B — Clone and source**
+<details>
+<summary><strong>Recommended — clone & source</strong></summary>
 
 ```bash
 git clone https://github.com/shakerbr/shell-prompt-style.git ~/.config/aurora-prompt
 echo 'source ~/.config/aurora-prompt/bashrc' >> ~/.bashrc
 ```
 
-**Option C — Copy the contents**
+</details>
 
-Open [`bashrc`](bashrc), copy everything, and paste it at the end of your `~/.bashrc`.
+<details>
+<summary><strong>Quick — download a single file</strong></summary>
 
-### 3. Reload your shell
+```bash
+curl -fsSL https://raw.githubusercontent.com/shakerbr/shell-prompt-style/main/bashrc \
+  -o ~/.aurora-prompt.sh
+echo 'source ~/.aurora-prompt.sh' >> ~/.bashrc
+```
+
+</details>
+
+<details>
+<summary><strong>Manual — copy into <code>~/.bashrc</code></strong></summary>
+
+Open [`bashrc`](bashrc), copy the full contents, and paste them at the end of your `~/.bashrc`.
+
+</details>
+
+**3. Reload your shell**
 
 ```bash
 source ~/.bashrc
 ```
 
+---
+
 ## Configuration
 
-All options live at the top of [`bashrc`](bashrc) in the **CONFIGURATION** section. No need to edit anything below the engine divider.
+All settings live in the **CONFIGURATION** block at the top of [`bashrc`](bashrc). Everything below the engine divider is implementation — no edits needed there.
+
+### Appearance
+
+| Variable | Default | Options |
+|---|---|---|
+| `AURORA_THEME` | `aurora` | `aurora` · `dracula` · `cyberpunk` · `forest` · `ocean` · `mono` |
+| `AURORA_MODE` | `auto` | `auto` · `dark` · `light` |
+| `AURORA_ARROW_STYLE` | `chevron` | `chevron` · `arrow` · `lambda` · `dollar` · `rocket` · `minimal` |
+| `AURORA_CONNECTOR_STYLE` | `rounded` | `rounded` · `sharp` · `dots` · `dashes` · `none` |
+| `AURORA_BOLD_INPUT` | `true` | Bold typed commands |
+| `AURORA_INPUT_COLOR` | `6` | 256-color code for command input |
+
+### Display
 
 | Variable | Default | Description |
 |---|---|---|
-| `AURORA_THEME` | `aurora` | Color theme (`aurora`, `dracula`, `cyberpunk`, `forest`, `ocean`, `mono`) |
-| `AURORA_MODE` | `auto` | Appearance mode (`auto`, `dark`, `light`) |
-| `AURORA_SHOW_USER` | `true` | Show username |
-| `AURORA_SHOW_HOST` | `true` | Show hostname |
-| `AURORA_SHOW_TIME` | `true` | Show clock |
-| `AURORA_SHOW_GIT` | `true` | Show git branch & status |
-| `AURORA_SHOW_GIT_STASH` | `true` | Show stash count |
-| `AURORA_SHOW_GIT_UPSTREAM` | `true` | Show ahead/behind upstream |
-| `AURORA_SHOW_TIMER` | `true` | Show command execution time |
-| `AURORA_TIMER_THRESHOLD` | `3` | Min seconds before showing timer |
-| `AURORA_SHOW_VENV` | `true` | Show Python venv / Conda env |
-| `AURORA_SHOW_JOBS` | `true` | Show background job count |
-| `AURORA_SHOW_SSH` | `true` | Highlight SSH sessions |
-| `AURORA_SHOW_EXIT_CODE` | `true` | Show exit code on failure |
-| `AURORA_BOLD_INPUT` | `true` | Bold typed commands |
-| `AURORA_INPUT_COLOR` | `6` | Custom input color (256-color code) |
-| `AURORA_DIR_STYLE` | `full` | Directory display (`full`, `truncate`, `basename`) |
-| `AURORA_TIME_FORMAT` | `24h` | Clock format (`24h`, `12h`) |
-| `AURORA_ARROW_STYLE` | `chevron` | Prompt arrow (`chevron`, `arrow`, `lambda`, `dollar`, `rocket`, `minimal`) |
-| `AURORA_CONNECTOR_STYLE` | `rounded` | Line connectors (`rounded`, `sharp`, `dots`, `dashes`, `none`) |
+| `AURORA_SHOW_USER` | `true` | Username |
+| `AURORA_SHOW_HOST` | `true` | Hostname |
+| `AURORA_SHOW_TIME` | `true` | Clock in prompt |
+| `AURORA_TIME_FORMAT` | `24h` | `24h` or `12h` |
+| `AURORA_DIR_STYLE` | `full` | `full` · `truncate` · `basename` |
+| `AURORA_SHOW_SSH` | `true` | Highlight remote SSH sessions |
+| `AURORA_SHOW_JOBS` | `true` | Background job count |
+| `AURORA_SHOW_VENV` | `true` | Active Python venv or Conda env |
 
-### Example: minimal dark Dracula
+### Git & timing
+
+| Variable | Default | Description |
+|---|---|---|
+| `AURORA_SHOW_GIT` | `true` | Branch and working-tree status |
+| `AURORA_SHOW_GIT_STASH` | `true` | Stash count |
+| `AURORA_SHOW_GIT_UPSTREAM` | `true` | Ahead / behind upstream |
+| `AURORA_SHOW_TIMER` | `true` | Last command duration |
+| `AURORA_TIMER_THRESHOLD` | `3` | Seconds before timer appears |
+| `AURORA_SHOW_EXIT_CODE` | `true` | Numeric code on failure |
+
+### Recipe — minimal Dracula
 
 ```bash
 AURORA_THEME="dracula"
@@ -97,9 +146,9 @@ AURORA_ARROW_STYLE="lambda"
 AURORA_CONNECTOR_STYLE="none"
 ```
 
-### Symbols without Nerd Font
+### Recipe — terminals without Nerd Font
 
-If your terminal font doesn't render unicode symbols well, replace them with plain text:
+Replace unicode symbols with plain text:
 
 ```bash
 AURORA_SYM_FOLDER=""
@@ -108,29 +157,54 @@ AURORA_SYM_SUCCESS="ok"
 AURORA_SYM_FAIL="err"
 ```
 
-## Project Structure
+---
+
+## Themes
+
+| Theme | Character |
+|---|---|
+| `aurora` | Soft purples and greens — the default |
+| `dracula` | Classic Dracula-inspired contrast |
+| `cyberpunk` | Neon pink and cyan |
+| `forest` | Earthy greens |
+| `ocean` | Cool blues and teals |
+| `mono` | Grayscale, distraction-free |
+
+Each theme ships with tuned palettes for both dark and light terminal backgrounds.
+
+---
+
+## Project layout
 
 ```
 shell-prompt-style/
-├── bashrc       # The entire prompt — config + engine in one file
-├── LICENSE      # MIT License
-└── README.md    # This file
+├── bashrc          # Config + engine — the entire prompt
+├── LICENSE         # MIT
+└── README.md
 ```
+
+---
 
 ## Uninstall
 
-Remove the `source` line (or pasted block) from your `~/.bashrc`, then reload:
+Remove the `source` line (or pasted block) from `~/.bashrc`, then reload:
 
 ```bash
 source ~/.bashrc
 ```
 
-Your backup at `~/.bashrc.bak` is untouched if you followed the quick start.
+Your backup at `~/.bashrc.bak` is left untouched.
 
-## License
-
-[MIT](LICENSE) © [Shaker Br](https://github.com/shakerbr)
+---
 
 ## Contributing
 
-Issues and pull requests are welcome on [GitHub](https://github.com/shakerbr/shell-prompt-style).
+Found a bug or have an idea? [Open an issue](https://github.com/shakerbr/shell-prompt-style/issues) or submit a pull request — all contributions are welcome.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
+
+Copyright © 2026 [Shaker Br](https://github.com/shakerbr) · [shbhky@gmail.com](mailto:shbhky@gmail.com)
