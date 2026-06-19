@@ -4,11 +4,19 @@
 
 **An adaptive, customizable Bash prompt — one file, zero dependencies.**
 
+<br>
+
+<img src="docs/availability.svg" alt="Aurora availability — Linux and Bash live now; macOS, Windows, Zsh, and Fish coming soon" width="720">
+
+<br>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Bash](https://img.shields.io/badge/Bash-4.0%2B-4EAA25?logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
-[![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey?logo=linux&logoColor=white)](https://github.com/shakerbr/shell-prompt-style)
+[![Platform](https://img.shields.io/badge/Platform-Linux-87d787?logo=linux&logoColor=white)](https://github.com/shakerbr/shell-prompt-style)
+[![macOS](https://img.shields.io/badge/macOS-coming%20soon-lightgrey?logo=apple&logoColor=white)](#roadmap)
+[![Windows](https://img.shields.io/badge/Windows-coming%20soon-lightgrey?logo=windows&logoColor=white)](#roadmap)
 
-[Installation](#installation) · [Configuration](#configuration) · [Themes](#themes) · [License](#license)
+[Installation](#installation) · [Configuration](#configuration) · [Themes](#themes) · [Roadmap](#roadmap) · [License](#license)
 
 </div>
 
@@ -189,11 +197,28 @@ Each theme ships with tuned palettes for both dark and light terminal background
 shell-prompt-style/
 ├── bashrc                  # Config + engine — the entire prompt
 ├── docs/
+│   ├── availability.svg    # Platform & shell roadmap graphic
 │   ├── preview-dark.png    # README preview (dark)
 │   └── preview-light.png   # README preview (light)
 ├── LICENSE                 # MIT
 └── README.md
 ```
+
+---
+
+## Roadmap
+
+Aurora v1.0 targets **Bash on Linux**. Planned next:
+
+| Area | Status |
+|---|---|
+| **Linux** | Available now — auto dark/light via GNOME / Ptyxis |
+| **Other Linux distros** | Broader desktop-environment detection (KDE, XFCE, etc.) |
+| **macOS** | Terminal theme detection + install path for `.bash_profile` |
+| **Windows** | Git Bash, WSL, and native terminal support |
+| **Other shells** | Zsh, Fish, and others — same look, shell-native implementation |
+
+Want a specific platform or shell prioritized? [Open an issue](https://github.com/shakerbr/shell-prompt-style/issues) and let us know.
 
 ---
 
