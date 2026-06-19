@@ -18,12 +18,17 @@ Aurora is a feature-rich shell prompt built entirely in Bash. It adapts to your 
 
 ### Preview
 
-```
-╭─ ✔ ◴ 3s ─── shakerbr@dev ─ in 🗀 ~/projects/my-app on ⎇  main ✎ ● + ⇡2  14:32
-╰─❯❯❯
-```
+<p align="center">
+  <img src="docs/preview-dark.svg" alt="Aurora prompt — dark mode" width="780"><br>
+  <sub><strong>Dark</strong> — aurora theme</sub>
+</p>
 
-> Add a screenshot here once published — `docs/preview.png` works great as a social preview.
+<p align="center">
+  <img src="docs/preview-light.svg" alt="Aurora prompt — light mode" width="780"><br>
+  <sub><strong>Light</strong> — aurora theme</sub>
+</p>
+
+Colors match the Aurora xterm-256 palette defined in <code>bashrc</code>. The live prompt auto-switches between them via <code>AURORA_MODE="auto"</code>.
 
 ---
 
