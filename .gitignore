@@ -1,0 +1,11 @@
+# Backup files created during installation
+*.bak
+*~
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/

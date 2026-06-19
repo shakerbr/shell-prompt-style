@@ -2,6 +2,10 @@
 # ║  ✨ Aurora v1.0 — Adaptive Customizable Bash Prompt        ║
 # ║  Edit the CONFIG section below to make it yours!            ║
 # ╚══════════════════════════════════════════════════════════════╝
+#
+# Author:  Shaker Br  <shbhky@gmail.com>
+# GitHub:  https://github.com/shakerbr/shell-prompt-style
+# License: MIT
 
 # ┌─────────────────────────────────────────────────────────────┐
 # │                    ⚙  CONFIGURATION                        │
