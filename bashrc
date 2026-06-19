@@ -36,7 +36,7 @@ AURORA_SHOW_JOBS=true          # Show background job count
 AURORA_SHOW_SSH=true           # Highlight SSH sessions
 AURORA_SHOW_EXIT_CODE=true     # Show exit code on failure (not just ✘)
 AURORA_BOLD_INPUT=true         # Make typed commands bold (true / false)
-AURORA_INPUT_COLOR="6"          # Custom input color code (e.g. "141" for purple, "" for default)
+AURORA_INPUT_COLOR="6:4"          # dark:light 256-color codes (e.g. "141:25"); both required or unchanged
 
 # ── Directory Style ──────────────────────────────────────────
 # Choose: "full" | "truncate" | "basename"
@@ -213,6 +213,24 @@ __aurora_load_theme() {
                 _C_ARR1='243'  _C_ARR2='248'  _C_ARR3='252'
                 ;;
         esac
+    fi
+}
+
+# ── Command Input Color ───────────────────────────────────────
+# Returns a 256-color code for the current mode, or nothing if unset/invalid.
+# Format: "dark:light" — both sides required (e.g. "183:27").
+__aurora_resolve_input_color() {
+    local pair="$AURORA_INPUT_COLOR"
+    [[ -z "$pair" || "$pair" != *:* ]] && return 1
+
+    local dark="${pair%%:*}"
+    local light="${pair#*:}"
+    [[ -z "$dark" || -z "$light" || "$light" == *:* ]] && return 1
+
+    if __aurora_is_light; then
+        echo "$light"
+    else
+        echo "$dark"
     fi
 }
 
@@ -403,14 +421,16 @@ __build_prompt() {
 
     # ── Command Input Styling ──
     local input_style=""
-    if [[ "$AURORA_BOLD_INPUT" == true || -n "$AURORA_INPUT_COLOR" ]]; then
+    local input_color
+    input_color=$(__aurora_resolve_input_color 2>/dev/null) || input_color=""
+    if [[ "$AURORA_BOLD_INPUT" == true || -n "$input_color" ]]; then
         local style_code=""
         if [[ "$AURORA_BOLD_INPUT" == true ]]; then
             style_code="1"
         fi
-        if [[ -n "$AURORA_INPUT_COLOR" ]]; then
+        if [[ -n "$input_color" ]]; then
             [[ -n "$style_code" ]] && style_code+=";"
-            style_code+="38;5;${AURORA_INPUT_COLOR}"
+            style_code+="38;5;${input_color}"
         fi
         input_style="\[\e[${style_code}m\]"
     fi

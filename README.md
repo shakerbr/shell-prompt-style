@@ -114,7 +114,7 @@ All settings live in the **CONFIGURATION** block at the top of [`bashrc`](bashrc
 | `AURORA_ARROW_STYLE` | `chevron` | `chevron` · `arrow` · `lambda` · `dollar` · `rocket` · `minimal` |
 | `AURORA_CONNECTOR_STYLE` | `rounded` | `rounded` · `sharp` · `dots` · `dashes` · `none` |
 | `AURORA_BOLD_INPUT` | `true` | Bold typed commands |
-| `AURORA_INPUT_COLOR` | `6` | 256-color code for command input |
+| `AURORA_INPUT_COLOR` | `""` | `dark:light` 256-color pair (e.g. `183:27`); both required or input color stays default |
 
 ### Display
 
