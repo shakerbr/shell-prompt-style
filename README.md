@@ -27,16 +27,12 @@ Aurora is a feature-rich shell prompt built entirely in Bash. It adapts to your 
 ### Preview
 
 <div align="center">
-  <div style="overflow:hidden; width:780px; max-width:100%; aspect-ratio:3690/564; margin:0 auto;">
-    <img src="docs/preview-dark.png" alt="Aurora prompt — dark mode" style="width:100%; display:block;">
-  </div>
+  <img src="docs/preview-dark.png" alt="Aurora prompt — dark mode" width="780"><br>
   <sub><strong>Dark</strong> — aurora theme</sub>
 </div>
 
 <div align="center">
-  <div style="overflow:hidden; width:780px; max-width:100%; aspect-ratio:3690/564; margin:0 auto;">
-    <img src="docs/preview-light.png" alt="Aurora prompt — light mode" style="width:100%; display:block;">
-  </div>
+  <img src="docs/preview-light.png" alt="Aurora prompt — light mode" width="780"><br>
   <sub><strong>Light</strong> — aurora theme</sub>
 </div>
 
@@ -197,9 +193,11 @@ Each theme ships with tuned palettes for both dark and light terminal background
 shell-prompt-style/
 ├── bashrc                  # Config + engine — the entire prompt
 ├── docs/
-│   ├── availability.svg    # Platform & shell roadmap graphic
-│   ├── preview-dark.png    # README preview (dark)
-│   └── preview-light.png   # README preview (light)
+│   ├── availability.svg      # Platform & shell roadmap graphic
+│   ├── preview-dark.png        # README preview (dark, cropped)
+│   ├── preview-light.png       # README preview (light, cropped)
+│   ├── preview-dark-full.png   # Full terminal screenshot (source)
+│   └── preview-light-full.png  # Full terminal screenshot (source)
 ├── LICENSE                 # MIT
 └── README.md
 ```
